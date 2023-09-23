@@ -41,7 +41,6 @@ const Dashboard = () => {
   }, [questionDone]);
 
   useEffect(() => {
-    // Check if all questions for the current week are completed
     sortedWeeks.forEach((weeknumber) => {
       const isCurrentWeek = openSections.includes(weeknumber);
       if (isCurrentWeek) {
