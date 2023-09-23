@@ -68,7 +68,15 @@ const Dashboard = () => {
     return acc;
   }, {});
 
-  const sortedWeeks = Object.keys(groupedQuestions).sort();
+  const sortedWeeks = Object.keys(groupedQuestions).sort((a, b) => {
+    const weekA = parseInt(groupedQuestions[a][0].weeknumber.substring(5), 10);
+    const weekB = parseInt(groupedQuestions[b][0].weeknumber.substring(5), 10);
+    return weekA - weekB;
+    // console.log("hello", groupedQuestions[a][0].weeknumber);
+  });
+
+  // console.log("sortedWeeks:", sortedWeeks);
+  // console.log("groupedQuestions:", groupedQuestions);
 
   const toggleAccordion = (weeknumber) => {
     if (openSections.includes(weeknumber)) {
@@ -123,7 +131,7 @@ const Dashboard = () => {
       </div>
       <div className="text-white mt-10 flex flex-row">
         <div className="w-full lg:w-1/2 px-10 space-y-5">
-          {console.log(questionDone)}
+          {/* {console.log(questionDone)} */}
           {sortedWeeks.map((weeknumber) => (
             <div key={weeknumber}>
               <div>
